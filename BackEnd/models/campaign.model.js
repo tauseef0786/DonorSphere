@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 
 const milestoneSchema = new mongoose.Schema({
@@ -31,24 +32,42 @@ const campaignSchema = new mongoose.Schema({
     bankAccount: {
       accountNumber: String,
       bankName: String,
-      accountHolderName: String
+      accountHolderName: String,
+      ifscCode: String
     },
-    qrCode: String
+    qrCode: String,
+    upiId: String, 
+    paypalEmail: String 
   },
   milestones: [milestoneSchema],
   rewardTiers: [rewardTierSchema],
   tags: [String],
   featured: { type: Boolean, default: false },
+  location: { type: String }, 
+  teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], 
+  socialLinks: {
+    facebook: String,
+    twitter: String,
+    instagram: String,
+    website: String
+  },
+  campaignUpdates: [
+    {
+      title: String,
+      content: String,
+      date: { type: Date, default: Date.now }
+    }
+  ],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
 
-// Update the updatedAt timestamp before saving
-campaignSchema.pre('save', function(next) {
+// Update the `updatedAt` timestamp before saving
+campaignSchema.pre('save', function (next) {
   this.updatedAt = new Date();
   next();
 });
 
-// ✅ Use `export default` instead of `module.exports`
+// Export Model
 const Campaign = mongoose.model('Campaign', campaignSchema);
 export default Campaign;

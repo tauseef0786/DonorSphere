@@ -1,6 +1,6 @@
 import User from '../models/user.model.js';
 
-// 📌 Get user profile
+// Get user profile
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password'); // Exclude password
@@ -14,7 +14,7 @@ export const getProfile = async (req, res) => {
   }
 };
 
-// 📌 Update user profile
+// Update user profile
 export const updateProfile = async (req, res) => {
   try {
     const { username, email, profileImage, bio } = req.body;
