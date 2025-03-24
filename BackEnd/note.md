@@ -1,10 +1,10 @@
 /BackEnd
  ├── config/
- │    ├── database.js           ✅ (Handles MongoDB connection)
+ │    ├── database.js          
  │
- ├── controllers/               ✅ (Renamed from 'controller' to 'controllers' for consistency)
- │    ├── auth.controller.js    ✅ (Handles authentication logic)
- │    ├── user.controller.js    ✅ (Handles user-related logic)
+ ├── controllers/               (Renamed from 'controller' to 'controllers' for consistency)
+ │    ├── auth.controller.js    (Handles authentication logic)
+ │    ├── user.controller.js    (Handles user-related logic)
  │    ├── campaign.controller.js✅ (Handles campaigns)
  │    ├── donation.controller.js✅ (Handles donations)
  │    ├── comment.controller.js ✅ (Handles comments)

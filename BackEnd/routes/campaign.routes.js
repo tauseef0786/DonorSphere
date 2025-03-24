@@ -1,14 +1,16 @@
 import express from 'express';
 import { body, param } from 'express-validator';
-import { getAllCampaigns, createCampaign, updateCampaign, deleteCampaign } from '../controller/campaign.controller.js';
+import { getAllCampaigns, createCampaign, updateCampaign, deleteCampaign, getCampaignById } from '../controller/campaign.controller.js';
 import { authMiddleware, adminMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// 📌 Get all campaigns
+//  Get all campaigns
 router.get('/', getAllCampaigns);
 
-// 📌 Create campaign (Admin only)
+router.get('/:id', getCampaignById);
+
+//  Create campaign (Admin only)
 router.post('/',
     authMiddleware,
     adminMiddleware,
@@ -22,7 +24,7 @@ router.post('/',
     createCampaign
 );
 
-// 📌 Update campaign
+//  Update campaign
 router.put('/:id',
     authMiddleware,
     adminMiddleware,
@@ -35,7 +37,7 @@ router.put('/:id',
     updateCampaign
 );
 
-// 📌 Delete campaign
+// Delete campaign
 router.delete('/:id',
     authMiddleware,
     adminMiddleware,

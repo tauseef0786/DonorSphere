@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    match: [/.+\@.+\..+/, 'Please enter a valid email address'] // ✅ Email validation
+    match: [/.+\@.+\..+/, 'Please enter a valid email address'] // Email validation
   },
   password: {
     type: String,
@@ -41,24 +41,24 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// 🔒 **Hash password before saving**
+//  **Hash password before saving**
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   
   try {
-    const salt = await bcrypt.genSalt(12); // ✅ Generate salt
+    const salt = await bcrypt.genSalt(12); // Generate salt
     this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
-    next(error); // ✅ Pass error to middleware
+    next(error); // Pass error to middleware
   }
 });
 
-// 🔑 **Compare password method**
+//  **Compare password method**
 userSchema.methods.comparePassword = async function(candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-// ✅ Use `export default` instead of `module.exports`
+// Use `export default` instead of `module.exports`
 const User = mongoose.model('User', userSchema);
 export default User;
