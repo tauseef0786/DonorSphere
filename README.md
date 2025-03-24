@@ -1,5 +1,12 @@
 # DonorSphere
 
+## Preview
+### Home Page 
+![image](https://github.com/user-attachments/assets/dc193318-9a43-4fa5-a725-386c08e8f216)
+
+### Contact Page 
+![image](https://github.com/user-attachments/assets/8f371ea4-d552-4d81-a83d-e4bd519b760e)
+
 DonorSphere is a **crowdfunding platform** designed to help individuals and organizations raise funds for their causes. It allows users to create campaigns, make donations, leave comments, and interact via chat.
 
 ##  Features
