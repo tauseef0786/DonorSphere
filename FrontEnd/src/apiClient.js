@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = "http://localhost:3030/api";
+const baseUrl = "https://donorsphere.onrender.com/api";
 
 export const apiClient = axios.create({
     baseURL: baseUrl,
